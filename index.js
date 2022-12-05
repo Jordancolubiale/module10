@@ -14,14 +14,50 @@ const teamMembers = [];
 
 
 // function for creating manager - inquirer questions
-const generateManager = {
-    
-}
-  // take those questions and create a new Manager with the user provided answers
-  // push that new Manager to the team members array
+const generateManager = () => {
+   return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'Manager name?',
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log("Please enter the manager's name!");
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "Please enter the manager's email.",
+            validate: email => {
+                valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+                if (valid) {
+                    return true;
+                } else {
+                    console.log('Please enter an email!')
+                    return false;
+                }
+            }
+        },
+    ])
+        .then(managerInput => {
+            const { name, id, email, officeNumber } = managerInput;
+            const manager = new Manager(name, id, email, officeNumber);
 
-  // follow the same pattern for each type of employee
-  // build a function for them that uses inquirer
+            teamArray.push(manager);
+            console.log(manager);
+        })
+};
+
+// take those questions and create a new Manager with the user provided answers
+// push that new Manager to the team members array
+
+// follow the same pattern for each type of employee
+// build a function for them that uses inquirer
 
 
 // STRUCTURING IT
