@@ -14,6 +14,9 @@ const teamMembers = [];
 
 
 // function for creating manager - inquirer questions
+const generateManager = {
+    
+}
   // take those questions and create a new Manager with the user provided answers
   // push that new Manager to the team members array
 
